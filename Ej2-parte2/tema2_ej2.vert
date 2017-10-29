@@ -3,9 +3,11 @@ uniform mat4 mvp;
 uniform float escala;
 uniform bool escala_enable;
 uniform float rotate_colors;
+uniform float discard_factor;
 in vec3 aPosition;
 in vec3 aNormal;
-in vec3 aTextura;
+in vec2 aTextura;
+out vec2 vST;
 
 out vec3 vColor;
 
@@ -48,4 +50,5 @@ void main()
 {
     gl_Position = mvp * vec4(escale(), 1);
     vColor = rotate(aNormal,vec3(1,1,0),rotate_colors);
+    vST = aTextura.st;
 }
