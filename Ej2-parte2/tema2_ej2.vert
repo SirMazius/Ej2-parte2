@@ -28,16 +28,12 @@ vec3 escale()
 }
 
 
-
+//Matriz de rotacion general
 mat4 rotationMatrix(vec3 axis, float angle) {
     axis = normalize(axis);
-    float s = sin(angle);
-    float c = cos(angle);
-    float oc = 1.0 - c;
-    
-    return mat4(oc * axis.x * axis.x + c,           oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s,  0.0,
-                oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s,  0.0,
-                oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c,           0.0,
+    return mat4((1-cos(angle)) * axis.x * axis.x + cos(angle),           (1-cos(angle)) * axis.x * axis.y - axis.z *  sin(angle),  (1-cos(angle)) * axis.z * axis.x + axis.y *  sin(angle),  0.0,
+                (1-cos(angle)) * axis.x * axis.y + axis.z *  sin(angle),  (1-cos(angle)) * axis.y * axis.y + cos(angle),           (1-cos(angle)) * axis.y * axis.z - axis.x *  sin(angle),  0.0,
+                (1-cos(angle)) * axis.z * axis.x - axis.y *  sin(angle),  (1-cos(angle)) * axis.y * axis.z + axis.x *  sin(angle),  (1-cos(angle)) * axis.z * axis.z + cos(angle),           0.0,
                 0.0,                                0.0,                                0.0,                                1.0);
 }
 

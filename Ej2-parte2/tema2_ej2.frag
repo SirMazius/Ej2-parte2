@@ -21,7 +21,7 @@ void main()
         discard;
     //fFragColor = vColor;
     vec4 stone = texture(stone_texture, vST);
-    vec4 moss = texture(moss_texture, vST);
+    vec4 moss = texture(moss_texture, vST) * 0.5; // se multiplica para que no sea musgo radioactivo
     if (texture_count == 0)
         fFragColor = stone + vColor;
     else if(texture_count == 1)
